@@ -1,0 +1,58 @@
+﻿@model Cadastro.Models.LoginViewModel
+@{
+    ViewBag.Title = "Login";
+}
+
+
+<div class="container">
+    <div class="row">
+        <h3 class="titulo">Entrar no Sistema</h3>
+    </div>
+    <div class="row">
+        <section id="loginForm">
+            @using (Html.BeginForm("Index", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Usuario, new { @class = "control-label col-md-2" })
+                    <dev class="col-md-10">
+                        @Html.TextBoxFor(m => m.Usuario, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Usuario, "", new { @class = "text-danger" })
+                    </dev>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Senha, new { @class = "control-label col-md-2" })
+                    <dev class="col-md-10">
+                        @Html.PasswordFor(m => m.Senha, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Senha, "", new { @class = "text-danger" })
+                    </dev>
+                </div>
+                <dev class="form-group">
+                    <div class="col-md-10 col-lg-1-md-offset-2">
+                        @Html.CheckBoxFor(m => m.Lembrarme)
+                        @Html.LabelFor(m => m.Lembrarme)
+                    </div>
+                </dev>
+                <dev class="form-group">
+                    <div class="col-md-10 col-md-offset-2">
+                        <input type="submit" class="btn btn-success" value="Entrar" />
+                    </div>
+                </dev>
+                <dev class="form-group">
+                    <ul class="col-md-10 col-lg-1-md-offset-2">
+                        <li>@Html.ActionLink("Cadastre-se", "Cadastrar", "Cadastro")</li>
+                    </ul>
+                </dev>
+                <dev class="form-group">
+                    <ul class="col-md-10 col-lg-1-md-offset-2">
+                        <li>@Html.ActionLink("Esqueceu a senha? Clique aqui.", "RecuperarSenha", "Senha")</li>
+                    </ul>
+                </dev>
+            }
+        </section>
+    </div>
+</div>
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

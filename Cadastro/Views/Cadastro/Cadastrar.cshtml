@@ -1,0 +1,40 @@
+﻿
+
+@model Cadastro.Models.CadastroViewModel
+@{
+    ViewBag.Title = "Cadastrar Usuario";
+}
+
+<h2>Cadastro</h2>
+
+<div class="container">
+    <div class="row">
+        <h3 class="titulo">Cadastro de usuario</h3>
+    </div>
+    <div class="row">
+        <section id="loginForm">
+            @using (Html.BeginForm("Cadastrar", "Cadastro", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Usuario, new { @class = "form-label col-md-2" })
+                    <dev class="col-md-10">
+                        @Html.TextBoxFor(m => m.Usuario, new { @class = "form-control" })
+                    </dev>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Senha, new { @class = "form-label col-md-2" })
+                    <dev class="col-md-10">
+                        @Html.PasswordFor(m => m.Senha, new { @class = "form-control" })
+                    </dev>
+                </div>
+
+                <dev class="form-group">
+                    <div class="col-md-10 col-lg-1-md-offset-2">
+                        <input type="submit" class="btn btn-success" value="Entrar" />
+                    </div>
+                </dev>
+            }
+        </section>
+    </div>
+</div>
+
